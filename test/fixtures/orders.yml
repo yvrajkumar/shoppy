@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 
+  product_id: 
+  email: 
+  quantity: 
+  status: 
+  cost: 
+
+two:
+  order_id: 
+  product_id: 
+  email: 
+  quantity: 
+  status: 
+  cost: 

@@ -1,0 +1,44 @@
+<h1>Delivery Details</h1>
+<% if user_signed_in? %>
+<table style="display:flex;flex-direction:vertical;">
+    <%= form_tag deliverydetails_update_path do %>
+    <tr>
+        <td>Door No :</td>
+        <td><%= text_field_tag :door_no, current_user.door_no %></td>
+    </tr>
+    <tr>
+        <td>Street  :</td>
+        <td><%= text_field_tag :street, current_user.street %></td>
+    </tr>
+    <tr>
+        <td>Area    :</td>
+        <td><%= text_field_tag :area, current_user.area %></td>
+    </tr>
+    <tr>
+        <td>City    :</td>
+        <td><%= text_field_tag :city, current_user.city %></td>
+    </tr>
+    <tr>
+        <td>State   :</td>
+        <td><%= text_field_tag :state, current_user.state %></td>
+    </tr>
+    <tr>
+        <td>Country :</td>
+        <td><%= text_field_tag :country, current_user.country %></td>
+    </tr>
+    <tr>
+        <td>Phone No:</td>
+        <td><%= text_field_tag :phone_no, current_user.phone_no %></td>
+    </tr>   
+    <tr>
+        
+        <td>Address :</td>
+        <td><%= text_field_tag :address, current_user.address %></td>     
+    </tr>
+</table> 
+<%= submit_tag "Update Address" %>
+<% end %>
+<% else %>
+<h1>Please Sign In</h1>
+<a href="/users/sign_in">Sign In</a>
+<% end %>

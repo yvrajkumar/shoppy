@@ -1,0 +1,38 @@
+<h1>Details</h1>
+<div>
+    <% @products.each do |product| %>
+        <div style="padding:20px;display:flex">
+        <div>
+        <img src=<%= product.img_url %> width="400px" height="500px"/>
+        </div>
+        <div style="padding:80px;">
+        <h3><%= product.brand %>&nbsp;<%= product.title %></h3>
+        <p>Age: <%= product.age %></p>
+        <p>category: <%= product.category %></p>
+        <p>Cloth_Type: <%= product.cloth_type %></p>
+        <p>Color: <input type="color" value=<%= product.color %> disabled/></p>
+        <p>Gender: <%= product.gender %></p>
+        <p>Rs. <%= product.price %></p>
+        <p>Size: <%= product.size %></p>
+        <p>Quantity:</p>
+        <% if user_signed_in? %>
+        <%= form_tag customerorder_new_path do %>
+            <%= hidden_field_tag 'title', product.brand+" "+product.title %>
+            <%= hidden_field_tag 'email', current_user.email %>
+            <%= hidden_field_tag 'address', current_user.address %>
+            <%= hidden_field_tag 'product_id', product.id %>
+            <%= hidden_field_tag 'img_url', product.img_url %>
+            <%= hidden_field_tag 'status', "ordered" %>
+            <%= text_field_tag :quantity %>
+            <%= hidden_field_tag 'cost', product.price %>
+           <%= submit_tag "Place Order"%>
+        <% end %>
+        <% else %>
+        <input type="number" min="1" max="5"/>
+        <h3><a href="/users/sign_in">Place Order</a></h3>
+        <% end %>
+
+        </div>
+        </div>
+    <% end %>
+</div>

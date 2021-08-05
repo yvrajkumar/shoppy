@@ -1,0 +1,39 @@
+<select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+    <option>Men</option>
+    <option value="/mencategory/shirt">Shirts</option>
+    <option value="/mencategory/tshirt">T-shirts</option>
+    <option value="/mencategory/jeans">Jeans</option>
+    <option value="/mencategory/pant">Pants</option>
+</select>
+<select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+    <option>Women</option>
+    <option value="/womencategory/dress">Dress</option>
+    <option value="/womencategory/frock">Frock</option>
+    <option value="/womencategory/top">Tops</option>
+    <option value="/womencategory/legging">Leggings</option>
+</select>
+<div align="right">
+<% if user_signed_in? %>
+<b><a href="/deliverydetails/update">Delivery Details</a></b>&nbsp;&nbsp;&nbsp;
+<b><a href="/customerorder/show">My Orders</a></b>&nbsp;&nbsp;&nbsp;
+<b><a href="/users/edit">Edit Profile</a></b>&nbsp;&nbsp;&nbsp;
+<b><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></b>
+<% else %>
+<b><a href="/users/sign_in">Sign In</a></b>&nbsp;&nbsp;&nbsp;
+<b><a href="/users/sign_up">Sign UP</a></b>
+<% end %>
+</div>
+
+
+<div style="display:flex;flex-wrap: wrap;padding-left:75px;">
+    <% @products.each do |product| %>
+        <a href="http://localhost:3000/product_details/<%= product.id %> ">
+        <div style="padding:20px;">
+        <img src=<%= product.img_url %> width="200px" height="250px"/>
+        <p style="width: 250px;"><%= product.brand %>&nbsp;&nbsp;&nbsp;<%= product.title %></p>
+        <p>Rs.<%= product.price %>&nbsp;&nbsp;&nbsp;Size:<%= product.size %></p>
+        </div>
+        </a>
+    <% end %>
+</div>
+

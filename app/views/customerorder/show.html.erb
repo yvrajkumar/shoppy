@@ -1,0 +1,28 @@
+<h1>Your Orders</h1>
+<div>
+    <% @orders.each do |order| %>
+        <div style="padding:20px;display:flex">
+        <div>
+        <img src=<%= order.img_url %> width="200px" height="250px"/>
+        </div>
+        <div style="padding:80px;">
+        <p>Status: <%= order.status %></p>
+        <p>Rs. <%= order.cost %></p>
+        <p>Quantity: <%= order.quantity %></p>
+
+        <% if order.status!="delivered" %>
+        <div style="display:flex">
+        <a href="/product_details/<%= order.product_id%>" style="padding-right:20px;">View Details</a>
+        <%= form_tag customerorder_cancel_path do %>
+            <%= hidden_field_tag 'order_id', order.id %>
+           <%= submit_tag "Cancel Order" %>
+        <% end %>
+        </div>
+        <% else %>
+        <a href="/product_details/<%= order.product_id%>">View Details</a>
+        <% end %>
+
+        </div>
+        </div>
+    <% end %>
+</div>
