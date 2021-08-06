@@ -28,7 +28,7 @@
 
 <div style="display:flex;flex-wrap: wrap;padding-left:75px;">
     <% @products.each do |product| %>
-        <a href="http://localhost:3000/product_details/<%= product.id %> ">
+        <a href="https://shoppy-yvrk.herokuapp.com/product_details/<%= product.id %> ">
         <div style="padding:20px;">
         <img src=<%= product.img_url %> width="200px" height="250px"/>
         <p style="width: 250px;"><%= product.brand %>&nbsp;&nbsp;&nbsp;<%= product.title %></p>

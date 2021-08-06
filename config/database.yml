@@ -7,9 +7,9 @@
 default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: rajkumar
-  password: Rajkumar@123
-  host: localhost
+  username: uvx9ao1jadik6qzd
+  password: GmPS6L6uJ2WSTOeGkG1m
+  host: brhwmthd1wgbf3c1ecbg-mysql.services.clever-cloud.com
   timeout: 5000
 
 development:
