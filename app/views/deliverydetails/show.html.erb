@@ -1,7 +1,7 @@
 <h1>Delivery Details</h1>
 <% if user_signed_in? %>
 <table style="display:flex;flex-direction:vertical;">
-    <%= form_tag deliverydetails_update_path do %>
+    <%= form_tag(deliverydetails_update_path, method: :post) do %>
     <tr>
         <td>Door No :</td>
         <td><%= text_field_tag :door_no, current_user.door_no %></td>
