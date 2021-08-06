@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get "/womencategory/legging", to: "womencategory#index"
   get "/search", to: "search#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  default_url_options :host => "localhost:3000"
+  default_url_options :host => "https://shoppy-yvrk.herokuapp.com/"
 end
