@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   get "product_details/:id", to: "product_details#index"
-  post "customerorder/new", to: "customerorder#new"
+  post "cart/new", to: "cart#new"
+  get "/cart/show", to: "cart#show"
+  post "/cart/cancel", to: "cart#cancel"
+  post "cart/update", to: "cart#update"
   get "/customerorder/show", to: "customerorder#show"
   post "/customerorder/cancel", to: "customerorder#cancel"
   get "/deliverydetails/update", to: "deliverydetails#show"

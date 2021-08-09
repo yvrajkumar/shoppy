@@ -1,5 +1,6 @@
-<h1>Your Orders</h1>
 <div>
+    <% if @orders.empty? ==false %>
+    <h1>Your Orders</h1>
     <% @orders.each do |order| %>
         <div style="padding:20px;display:flex">
         <div>
@@ -25,4 +26,8 @@
         </div>
         </div>
     <% end %>
+    <% else %>
+    <h1 align="center">No order have been placed.</h1>
+    <% end %>
+
 </div>

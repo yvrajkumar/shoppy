@@ -23,6 +23,7 @@
 <div align="right">
 <% if user_signed_in? %>
 <b><a href="/deliverydetails/update">Delivery Details</a></b>&nbsp;&nbsp;&nbsp;
+<b><a href="/cart/show">My Cart Items</a></b>&nbsp;&nbsp;&nbsp;
 <b><a href="/customerorder/show">My Orders</a></b>&nbsp;&nbsp;&nbsp;
 <b><a href="/users/edit">Edit Profile</a></b>&nbsp;&nbsp;&nbsp;
 <b><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></b>

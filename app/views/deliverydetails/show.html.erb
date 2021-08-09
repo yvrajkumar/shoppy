@@ -31,7 +31,7 @@
         <td><%= text_field_tag :phone_no, current_user.phone_no %></td>
     </tr>   
     <tr>
-        <td><%= hidden_field :address, current_user.address %></td>     
+        <td><%= hidden_field_tag :address, current_user.address %></td>     
     </tr>
 </table> 
 <%= submit_tag "Update Address" %>

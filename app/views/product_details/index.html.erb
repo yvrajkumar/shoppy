@@ -16,20 +16,20 @@
         <p>Size: <%= product.size %></p>
         <p>Quantity:</p>
         <% if user_signed_in? %>
-        <%= form_tag customerorder_new_path do %>
+        <%= form_tag cart_new_path do %>
             <%= hidden_field_tag 'title', product.brand+" "+product.title %>
             <%= hidden_field_tag 'email', current_user.email %>
             <%= hidden_field_tag 'address', current_user.address %>
             <%= hidden_field_tag 'product_id', product.id %>
             <%= hidden_field_tag 'img_url', product.img_url %>
-            <%= hidden_field_tag 'status', "ordered" %>
+            <%= hidden_field_tag 'status', "cart" %>
             <%= text_field_tag :quantity %>
             <%= hidden_field_tag 'cost', product.price %>
-           <%= submit_tag "Place Order"%>
+           <%= submit_tag "Add to cart"%>
         <% end %>
         <% else %>
         <input type="number" min="1" max="5"/>
-        <h3><a href="/users/sign_in">Place Order</a></h3>
+        <h3><a href="/users/sign_in">Add to cart</a></h3>
         <% end %>
 
         </div>

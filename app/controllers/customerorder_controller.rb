@@ -1,17 +1,6 @@
 class CustomerorderController < ApplicationController
-    def new
-        customerorder = Customerorder.new(customerorder_params)
-        customerorder.cost = customerorder_params[:cost].to_i*customerorder_params[:quantity].to_i
-        if customerorder.save
-            redirect_to "/customerorder/show"
-        else
-            redirect_back fallback_location: "/product_details/customerorder.product_id"
-        end
-        
-    end
-
     def show
-        @orders = Customerorder.where(email: current_user.email)
+        @orders = Customerorder.where(email: current_user.email).and(Customerorder.where(status: "ordered"))
 
     end 
 

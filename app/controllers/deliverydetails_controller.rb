@@ -10,7 +10,6 @@ class DeliverydetailsController < ApplicationController
         address = door_no+", "+street+", "+area+", "+city+", "+state+", "+country+", Phone No: "+phone_no 
         puts address
         user = Deliverydetails.find_by(email: current_user.email)
-
         if user.update(door_no: door_no, street: street, area: area, city: city, state: state, country: country,phone_no: phone_no,address: address)                 
             redirect_to "/deliverydetails/update"
         else
