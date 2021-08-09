@@ -13,7 +13,7 @@
 
         <div style="display:flex">
         <a href="/product_details/<%= item.product_id%>" style="padding-right:20px;">View Details</a>
-        <% if current_user.address.length>30 %>
+        <% if current_user.address.to_s.length>30 %>
         <a href="/deliverydetails/update" style="padding-right:20px;">Update delivery address</a>
         <%= form_tag cart_update_path do %>
             <%= hidden_field_tag 'order_id', item.id %>
@@ -21,10 +21,7 @@
         <% end %>
         <% else %>
             <a href="/deliverydetails/update" style="padding-right:20px;">Add delivery address</a>
-            <%= form_tag cart_update_path do %>
-                <%= hidden_field_tag 'order_id', item.id %>
-               <%= submit_tag "Place Order", :disabled => true %>
-            <% end %>
+            <p>You need to provide your valid delivery details before placing order.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <% end %>
         <%= form_tag cart_cancel_path do %>
             <%= hidden_field_tag 'order_id', item.id %>
