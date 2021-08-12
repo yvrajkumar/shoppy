@@ -14,6 +14,10 @@ class CartController < ApplicationController
         @cart = Cart.where(email: current_user.email).and(Cart.where(status: "cart"))
     end 
 
+    def check
+        @cart = Cart.where(email: current_user.email).and(Cart.where(status: "cart"))
+    end
+
     def update
         updateorder = Cart.find_by(id: update_params[:order_id])
         status = "ordered"

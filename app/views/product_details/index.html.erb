@@ -23,13 +23,13 @@
             <%= hidden_field_tag 'product_id', product.id %>
             <%= hidden_field_tag 'img_url', product.img_url %>
             <%= hidden_field_tag 'status', "cart" %>
-            <%= text_field_tag :quantity %>
+            <%= number_field_tag :quantity, 1, min: 1, max: 10 %><br/><br/>
             <%= hidden_field_tag 'cost', product.price %>
            <%= submit_tag "Add to cart"%>
         <% end %>
         <% else %>
-        <input type="number" min="1" max="5"/>
-        <h3><a href="/users/sign_in">Add to cart</a></h3>
+        <input type="number" value="1" min="1" max="5"/>
+        <h3><a href="/users/sign_in" style="display: block;width: 200px;height: 15px;background: #838a90;padding: 10px;text-align: center;border-radius: 15px;color: white;font-weight: bold;">Add to cart</a></h3>
         <% end %>
 
         </div>

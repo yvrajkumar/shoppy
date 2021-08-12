@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td>Phone No:</td>
-        <td><%= text_field_tag :phone_no, current_user.phone_no %></td>
+        <td><%= text_field_tag :phone_no, current_user.phone_no, minlength: 10, maxlength: 10 %></td>
     </tr>   
     <tr>
         <td><%= hidden_field_tag :address, current_user.address %></td>     

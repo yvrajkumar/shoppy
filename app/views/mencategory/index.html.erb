@@ -1,16 +1,16 @@
 <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
     <option>Men</option>
-    <option value="/mencategory/shirt">Shirts</option>
-    <option value="/mencategory/tshirt">T-shirts</option>
+    <option value="/mencategory/shirts">Shirts</option>
+    <option value="/mencategory/tshirts">T-shirts</option>
     <option value="/mencategory/jeans">Jeans</option>
-    <option value="/mencategory/pant">Pants</option>
+    <option value="/mencategory/pants">Pants</option>
 </select>
 <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
     <option>Women</option>
-    <option value="/womencategory/dress">Dress</option>
-    <option value="/womencategory/frock">Frock</option>
-    <option value="/womencategory/top">Tops</option>
-    <option value="/womencategory/legging">Leggings</option>
+    <option value="/womencategory/dresses">Dress</option>
+    <option value="/womencategory/frocks">Frock</option>
+    <option value="/womencategory/tops">Tops</option>
+    <option value="/womencategory/leggings">Leggings</option>
 </select>
 
 <div align="right">
@@ -25,8 +25,124 @@
 <% end %>
 </div>
 
+<% if @products.empty? ==false %>
+<table>
+<tr>
+    <td><h4>Size:</h4></td>
+    <td><h4>Color:</h4></td>
+</tr>
+<tr>
+<td>
+<div style="margin-top:20px;margin-bottom:10px;display:flex">
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:color, params[:color])%>
+        <%= hidden_field_tag(:size, "S")%>
+        <%= submit_tag("Small") %>
+    <% end %>
 
-<div style="display:flex;flex-wrap: wrap;padding-left:75px;">
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:color, params[:color])%>
+        <%= hidden_field_tag(:size, "M")%>
+        <%= submit_tag("Medium") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:color, params[:color])%>
+        <%= hidden_field_tag(:size, "L")%>
+        <%= submit_tag("Large") %>
+    <% end %>
+</div>
+</td>
+<td>
+<div style="margin-top:10px;margin-bottom:10px;display:flex">
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "red")%>
+        <%= submit_tag("", :style => "background:red;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "blue")%>
+        <%= submit_tag("", :style => "background:blue;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "pink")%>
+        <%= submit_tag("", :style => "background:pink;") %>
+    <% end %>
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "yellow")%>
+        <%= submit_tag("", :style => "background: yellow;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "green")%>
+        <%= submit_tag("", :style => "background:green;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "black")%>
+        <%= submit_tag("", :style => "background:black;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "white")%>
+        <%= submit_tag("", :style => "background:white;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "grey")%>
+        <%= submit_tag("", :style => "background:grey;") %>
+    <% end %>
+
+    <%= form_tag(mencategory_filter_path, method: :get) do %>
+        <%= hidden_field_tag(:gender, @products[0].gender)%>
+        <%= hidden_field_tag(:category, @products[0].category)%>
+        <%= hidden_field_tag(:size, params[:size])%>
+        <%= hidden_field_tag(:color, "cream")%>
+        <%= submit_tag("", :style => "background:#C4AE78;") %>
+    <% end %>
+</div>
+
+</td>
+</tr>
+</table>
+<% else %>
+   <h1 align="center"></h1>
+<% end %>
+
+
+<% if @products.empty? ==false %>
+    <div style="display:flex;flex-wrap: wrap;padding-left:75px;">
     <% @products.each do |product| %>
         <a href="https://shoppy-yvrk.herokuapp.com/product_details/<%= product.id %> ">
         <div style="padding:20px;">
@@ -36,5 +152,9 @@
         </div>
         </a>
     <% end %>
-</div>
+    </div>
+<% else %>
+   <h1 align="center">No items found based on your filters.</h1>
+<% end %>
+
 

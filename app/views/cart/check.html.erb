@@ -1,0 +1,32 @@
+<div>
+    <% if @cart.empty? ==false %>
+    <h1>Your Cart Items</h1>
+    <%= form_tag orderdetails_new_path do %>
+    <% @cart.each do |item| %>
+        <div style="padding:20px;display:flex">
+        <div>
+        <%= check_box_tag 'item_ids[]', item.id %>
+        <img src=<%= item.img_url %> width="200px" height="250px"/>
+        </div>
+        <div style="padding:80px;">
+        <p>Status: <%= item.status %></p>
+        <p>Rs. <%= item.cost %></p>
+        <p>Quantity: <%= item.quantity %></p>
+
+        <div style="display:flex">
+        <a href="/product_details/<%= item.product_id%>" style="padding-right:20px;">View Details</a>
+        
+        </div>
+
+        </div>
+        </div>
+    <% end %>
+    
+    
+        
+       <%= submit_tag "Place Order" %>
+    <% end %>
+    <% else %>
+    <h1 align="center">No items in your cart </h1>
+    <% end %>
+</div>

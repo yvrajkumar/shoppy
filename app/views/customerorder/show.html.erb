@@ -1,33 +1,68 @@
 <div>
-    <% if @orders.empty? ==false %>
-    <h1>Your Orders</h1>
-    <% @orders.each do |order| %>
-        <div style="padding:20px;display:flex">
+    <% if @orderdetails.empty? ==false %>
+    <h1>Your Order Details</h1>
+    <table>
+    <tr>
+    <% @orderdetails.each do |order| %>
+    <td style="margin: 20px;border: 1px solid black;display:block;">
+        <% @orderinfo.each do |item| %>
+        <% if order.id == item.orderdetailsid %>
+        <div style="padding:20px;display:flex;">
         <div>
-        <img src=<%= order.img_url %> width="200px" height="250px"/>
+        <img src=<%= item.img_url %> width="200px" height="250px"/>
         </div>
         <div style="padding:80px;">
-        <p>Status: <%= order.status %></p>
-        <p>Rs. <%= order.cost %></p>
-        <p>Quantity: <%= order.quantity %></p>
+        <p>Status: <%= item.status %></p>
+        <p>Rs. <%= item.cost %></p>
+        <p>Quantity: <%= item.quantity %></p>
 
-        <% if order.status!="delivered" %>
         <div style="display:flex">
-        <a href="/product_details/<%= order.product_id%>" style="padding-right:20px;">View Details</a>
+        <a href="/product_details/<%= item.product_id%>" style="padding-right:20px;">View Details</a>
+        <% if item.status!="delivered" %>
         <%= form_tag customerorder_cancel_path do %>
-            <%= hidden_field_tag 'order_id', order.id %>
+            <%= hidden_field_tag 'order_id', item.id %>
            <%= submit_tag "Cancel Order" %>
         <% end %>
+        <% else %>
+            <p></p>
+        <% end %>
+        </div>
+
+
+        </div>
         </div>
         <% else %>
-        <a href="/product_details/<%= order.product_id%>">View Details</a>
+            <p></p>
         <% end %>
 
-        </div>
-        </div>
-    <% end %>
-    <% else %>
-    <h1 align="center">No order have been placed.</h1>
-    <% end %>
+        <% end %>
 
+        <div align="center">
+            <table style="border-top:1px solid black;">
+                <tr>
+                    <td>Items Cost:</td>
+                    <td>Rs. <%= order.costsum%></td>
+                </tr>
+                <tr>
+                    <td>Tax:</td>
+                    <td>Rs. <%= order.costsum*order.tax*0.01 %></td>
+                </tr>
+                <tr>
+                    <td>Shipping Cost:</td>
+                    <td>Rs. <%= order.deliverycharge %></td>
+                </tr>
+                <tr>                
+                    <td>Total Cost:</td>
+                    <td>Rs. <%= order.totalcost %></td>
+                </tr>
+            </table>
+            
+        </div>
+    <% end %>
+    </td>
+    </tr>
+    </table>
+    <% else %>
+    <h1 align="center">No order details related to your account.</h1>
+    <% end %>
 </div>

@@ -1,6 +1,23 @@
 <div>
     <% if @cart.empty? ==false %>
-    <h1>Your Cart Items</h1>
+    <div >
+        <table>
+        <tr>
+            <td>
+                <h1>Your Cart Items</h1>
+            </td>
+            <td>
+                <% if current_user.address.to_s.length>30 %>
+                    <a href="/deliverydetails/update" style="display: block;width: 200px;height: 15px;background: #4E9CAF;padding: 10px;text-align: center;border-radius: 15px;color: white;font-weight: bold;margin-left:5px;">Update delivery address</a>
+                    <a href="/cart/check" style="display: block;width: 200px;height: 15px;background: #4E9CAF;padding: 10px;text-align: center;border-radius: 15px;color: white;font-weight: bold;margin:10px;">Checkout Products</a>
+                <% else %>
+                    <a href="/deliverydetails/update" style=" display: block;width: 200px;height: 15px;background: #4E9CAF;padding: 10px;text-align: center;border-radius: 15px;color: white;font-weight: bold;">Add delivery address</a>
+                    <p>You need to provide your valid delivery details before placing order.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <% end %>
+            </td>
+        </tr>
+        </table>
+    </div>
     <% @cart.each do |item| %>
         <div style="padding:20px;display:flex">
         <div>
@@ -13,16 +30,7 @@
 
         <div style="display:flex">
         <a href="/product_details/<%= item.product_id%>" style="padding-right:20px;">View Details</a>
-        <% if current_user.address.to_s.length>30 %>
-        <a href="/deliverydetails/update" style="padding-right:20px;">Update delivery address</a>
-        <%= form_tag cart_update_path do %>
-            <%= hidden_field_tag 'order_id', item.id %>
-           <%= submit_tag "Place Order" %>
-        <% end %>
-        <% else %>
-            <a href="/deliverydetails/update" style="padding-right:20px;">Add delivery address</a>
-            <p>You need to provide your valid delivery details before placing order.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <% end %>
+        
         <%= form_tag cart_cancel_path do %>
             <%= hidden_field_tag 'order_id', item.id %>
            <%= submit_tag "Remove from cart" %>
@@ -33,6 +41,7 @@
         </div>
         </div>
     <% end %>
+
     <% else %>
     <h1 align="center">No items in your cart </h1>
     <% end %>
